@@ -8,6 +8,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="" />
   </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Roboto", sans-serif;
+      transition: all 0.4s ease;
+      scroll-behavior: smooth;
+    }
+    body {
+      display: grid;
+      justify-content: space-around;
+      height: 100vh;
+      align-items: center;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .login-btn {
+      position: relative;
+      background: hsl(0, 0%, 100%);
+      width: 100%;
+      max-width: 430px;
+      padding: 10rem 10rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #eaeaea;
+    }
+    h3 {
+      position: absolute;
+      top: 0;
+
+      font-size: 24px;
+      margin-top: 20px;
+    }
+    h4 {
+      font-size: 18px;
+      text-align: center;
+    }
+
+    button[type="submit"] {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-bottom: 0;
+      margin-left: 20px;
+      margin-right: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 1.5;
+      text-align: center;
+      text-transform: uppercase;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      background-color: #2196f3;
+      color: #fff;
+    }
+    button[type="submit"] a {
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+    }
+    button[type="submit"]:hover {
+      background-color: #0d8aed;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+      text-align: center;
+    }
+    a:hover {
+      color: #0056b3;
+      text-decoration: underline;
+    }
+    form label {
+      font-size: 20px;
+    }
+    form input {
+      outline: none;
+      padding: 0 15px;
+      margin-bottom: 10px;
+      border: 1px solid hsl(0, 0%, 79%);
+    }
+  </style>
   <body>
     {% for message in messages %}
     <div
@@ -26,30 +113,34 @@
     </div>
     {% endfor %}
 
-    <h3>Sign In</h3>
+    <div class="login-btn">
+      <h3>Sign In</h3>
 
-    <form action="/signin" method="post">
-      {% csrf_token %}
-      <label for="">Username</label>
-      <input
-        type="text"
-        id="username"
-        name="username"
-        placeholder="Enter Your Username"
-        required
-      />
-      <br />
-      <label for="">Password</label>
-      <input
-        type="password"
-        id="pass1"
-        name="pass1"
-        placeholder="Enter Your Password"
-        required
-      />
-      <br />
-      <button type="submit">Sign Up</button>
-    </form>
+      <form action="/signin" method="post">
+        <div class="field">
+          {% csrf_token %}
+          <label for="">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter Your Username"
+            required
+          />
+          <br />
+          <label for="">Password</label>
+          <input
+            type="password"
+            id="pass1"
+            name="pass1"
+            placeholder="Enter Your Password"
+            required
+          />
+          <br />
+          <button type="submit">Sign Up</button>
+        </div>
+      </form>
+    </div>
     <script src="" async defer></script>
   </body>
 </html>

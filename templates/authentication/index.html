@@ -6,34 +6,119 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+        transition: all 0.4s ease;
+        scroll-behavior: smooth;
+      }
+      body {
+        display: grid;
+        justify-content: space-around;
+        height: 100vh;
+        align-items: center;
+        font-family: "Poppins", sans-serif;
+      }
+      .login-btn {
+        position: relative;
+        background: hsl(0, 0%, 100%);
+        width: 100%;
+        max-width: 430px;
+        padding: 10rem 10rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid #eaeaea;
+      }
+      h3 {
+        position: absolute;
+        top: 0;
+
+        font-size: 24px;
+        margin-top: 20px;
+      }
+      h4 {
+        font-size: 18px;
+        text-align: center;
+      }
+      button[type="submit"] {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-bottom: 0;
+        margin-left: 20px;
+        margin-right: 20px;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 1.5;
+        text-align: center;
+        text-transform: uppercase;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        background-color: #2196f3;
+        color: #fff;
+      }
+      button[type="submit"] a {
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+      }
+      button[type="submit"]:hover {
+        background-color: #0d8aed;
+      }
+
+      a {
+        color: #007bff;
+        text-decoration: none;
+        text-align: center;
+      }
+      a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
-    {% for message in messages %}
-    <div
-      class="alert alert-{{ message.tags }} alert-dismissible fade show"
-      role="alert"
-    >
-      <strong>Message:</strong> {{ message }}
-      <button
-        type="button"
-        class="close"
-        data-dismiss="alert"
-        aria-label="Close"
+    <div class="login-btn">
+      {% for message in messages %}
+
+      <div
+        class="alert alert-{{ message.tags }} alert-dismissible fade show"
+        role="alert"
       >
-        <span aria-hidden="true">&times;</span>
+        <strong>Message:</strong> {{ message }}
+
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      {% endfor %}
+      <h3>Welcome to Geeks For Geeks</h3>
+      {% if user.is_authenticated %}
+      <h3>Hello {{ fname }}</h3>
+      <h4>You're successfully logged in.</h4>
+
+      <button type="submit">
+        <a href="/signout"> SignOut</a>
       </button>
+      {% else %}
+      <button type="submit"><a href="/signup"> SignUp</a></button>
+      <button type="submit"><a href="/signin"> SignIn</a></button>
+
+      {% endif %}
     </div>
-    {% endfor %}
-    <h3>Welcome to Geeks For Geeks</h3>
-    {% if user.is_authenticated %}
-    <h3>Hello {{ fname }}</h3>
-    <h4>You're successfully logged in.</h4>
-    <button type="submit"><a href="/signout"> SignOut</a></button>
-    {% else %}
-    <button type="submit"><a href="/signup"> SignUp</a></button>
-    <button type="submit"><a href="/signin"> SignIn</a></button>
-    {% endif %}
 
     <script src="" async defer></script>
   </body>
